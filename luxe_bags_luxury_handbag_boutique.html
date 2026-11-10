@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Bags | Luxury Handbag Boutique Lahore</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            pink: '#F3E5E3',
+                            pinkDark: '#E5C9C5',
+                            black: '#121212',
+                            brown: '#4A3525',
+                            brownLight: '#8C6D53',
+                            beige: '#F7F3EE',
+                            beigeDark: '#E8DFD5',
+                            gold: '#D4AF37',
+                            roseGold: '#B87333'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #FAF8F5;
+            color: #121212;
+            overflow-x: hidden;
+        }
+        
+        .font-serif-title {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F7F3EE;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #8C6D53;
+            border-radius: 3px;
+        }
+
+        /* Glassmorphism elements */
+        .glass-nav {
+            background: rgba(250, 248, 245, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        /* Hero banner overlay gradient */
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(18,18,18,0.3) 0%, rgba(18,18,18,0.7) 100%);
+        }
+
+        /* Toast animation */
+        @keyframes slideUp {
+            from { transform: translateY(100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+        .animate-slide-up {
+            animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        /* Badge pulse */
+        @keyframes pulseSoft {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        .badge-pulse {
+            animation: pulseSoft 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen relative">
+
+    <!-- TOP ANNOUNCEMENT BAR -->
+    <div class="bg-brand-black text-brand-beige text-xs font-light tracking-widest py-2 px-4 text-center border-b border-stone-800">
+        <p class="uppercase">Exclusive Atelier Collection • Complimentary Shipping across Pakistan over PKR 30,000 • Visit Lahore Flagship</p>
+    </div>
+
+    <!-- NAVIGATION HEADER -->
+    <header class="sticky top-0 z-40 glass-nav border-b border-stone-200 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Mobile Hamburger Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden text-brand-black hover:text-brand-brown focus:outline-none p-2" aria-label="Toggle Navigation Menu">
+                    <i class="fa-solid fa-bars text-xl"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#" onclick="switchView('home'); return false;" class="text-2xl sm:text-3xl font-serif-title font-bold tracking-widest text-brand-black flex items-center gap-2">
+                    <span class="bg-brand-black text-brand-pink w-8 h-8 rounded-full inline-flex items-center justify-center text-sm font-serif italic">L</span>
+                    LUXE BAGS
+                </a>
+
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex items-center space-x-8 text-sm font-medium tracking-wide uppercase">
+                    <button onclick="switchView('home')" class="nav-link text-brand-black hover:text-brand-brown transition-colors py-2 relative" data-view="home">Home</button>
+                    <button onclick="switchView('shop')" class="nav-link text-stone-600 hover:text-brand-brown transition-colors py-2 relative" data-view="shop">Shop Collection</button>
+                    <button onclick="switchView('about')" class="nav-link text-stone-600 hover:text-brand-brown transition-colors py-2 relative" data-view="about">Craftsmanship & About</button>
+                    <button onclick="switchView('contact')" class="nav-link text-stone-600 hover:text-brand-brown transition-colors py-2 relative" data-view="contact">Boutique & Contact</button>
+                </nav>
+
+                <!-- Action Icons -->
+                <div class="flex items-center space-x-5">
+                    <button onclick="switchView('shop')" class="text-stone-700 hover:text-brand-black transition-colors" title="Search Products">
+                        <i class="fa-solid fa-magnifying-glass text-lg"></i>
+                    </button>
+                    
+                    <!-- Direct WhatsApp Support Button -->
+                    <a href="https://wa.me/923001234567?text=Hello%20Luxe%20Bags%20Lahore,%20I%20have%20an%20inquiry%20regarding%20your%20handbag%20collection." target="_blank" rel="noopener noreferrer" class="hidden sm:inline-flex items-center gap-1.5 text-xs bg-emerald-50 text-emerald-700 border border-emerald-200 px-3 py-1.5 rounded-full font-medium hover:bg-emerald-100 transition-colors">
+                        <i class="fa-brands fa-whatsapp text-sm text-emerald-600"></i>
+                        <span>WhatsApp VIP</span>
+                    </a>
+
+                    <!-- Shopping Cart Icon -->
+                    <button id="cartBtn" class="relative text-stone-700 hover:text-brand-black transition-colors p-1" aria-label="View Cart">
+                        <i class="fa-solid fa-bag-shopping text-xl"></i>
+                        <span id="cartCountBadge" class="absolute -top-1 -right-1 bg-brand-brown text-white text-[10px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-md">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Dropdown Navigation Menu -->
+        <div id="mobileMenu" class="hidden md:hidden bg-brand-beige border-b border-stone-200 px-4 pt-2 pb-6 space-y-3">
+            <button onclick="switchView('home'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-stone-800 font-medium tracking-wider uppercase text-sm border-b border-stone-200/60">Home</button>
+            <button onclick="switchView('shop'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-stone-800 font-medium tracking-wider uppercase text-sm border-b border-stone-200/60">Shop Collection</button>
+            <button onclick="switchView('about'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-stone-800 font-medium tracking-wider uppercase text-sm border-b border-stone-200/60">Craftsmanship & About</button>
+            <button onclick="switchView('contact'); toggleMobileMenu();" class="block w-full text-left px-3 py-2 text-stone-800 font-medium tracking-wider uppercase text-sm">Boutique & Contact</button>
+            <div class="pt-2">
+                <a href="https://wa.me/923001234567" target="_blank" class="w-full flex items-center justify-center gap-2 bg-emerald-600 text-white py-2.5 rounded-lg text-xs font-semibold uppercase tracking-wider">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Chat on WhatsApp
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT VIEW CONTAINERS -->
+    <main class="flex-grow">
+        
+        <!-- ================= HOME PAGE VIEW ================= -->
+        <div id="view-home" class="page-view">
+            
+            <!-- LUXURY HERO BANNER -->
+            <section class="relative min-h-[85vh] flex items-center bg-stone-900 overflow-hidden">
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=2000" alt="Luxe Bags Leather Handbag Banner" class="w-full h-full object-cover object-center opacity-70 transform scale-105 hover:scale-100 transition-transform duration-1000">
+                    <div class="absolute inset-0 hero-overlay"></div>
+                </div>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-stone-100">
+                    <div class="max-w-2xl space-y-6">
+                        <span class="inline-block bg-brand-pink/20 border border-brand-pink/40 backdrop-blur-md text-brand-pink text-xs uppercase tracking-widest px-4 py-1.5 rounded-full font-semibold">
+                            Handcrafted Signature Atelier • Lahore
+                        </span>
+                        <h1 class="text-4xl sm:text-6xl lg:text-7xl font-serif-title font-normal tracking-tight leading-none text-white">
+                            Timeless Elegance, Modern Luxury.
+                        </h1>
+                        <p class="text-stone-300 text-base sm:text-lg font-light leading-relaxed max-w-lg">
+                            Discover exquisite leather handbags designed with precision and handcrafted for the discerning woman. Experience artisanal perfection from our MM Alam Road flagship.
+                        </p>
+                        <div class="pt-4 flex flex-col sm:flex-row gap-4">
+                            <button onclick="switchView('shop')" class="bg-brand-pink text-brand-black font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-full shadow-lg hover:bg-white transition-all transform hover:-translate-y-0.5 text-center">
+                                Explore Collection
+                            </button>
+                            <button onclick="switchView('about')" class="border border-stone-300 text-white font-semibold text-xs uppercase tracking-widest px-8 py-4 rounded-full hover:bg-white/10 backdrop-blur-sm transition-all text-center">
+                                Our Heritage
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- FEATURED PRODUCTS SECTION -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 border-b border-stone-200 pb-6">
+                    <div>
+                        <span class="text-brand-brownLight text-xs font-semibold tracking-widest uppercase">Curated Atelier</span>
+                        <h2 class="text-3xl sm:text-4xl font-serif-title font-semibold text-brand-black mt-1">Featured Handbags</h2>
+                    </div>
+                    <button onclick="switchView('shop')" class="mt-4 md:mt-0 text-sm font-semibold tracking-wider text-brand-brown hover:text-brand-black flex items-center gap-2 group">
+                        View All Products <i class="fa-solid fa-arrow-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <!-- Product Grid (Populated via JS) -->
+                <div id="featuredProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10">
+                    <!-- Dynamic rendering -->
+                </div>
+            </section>
+
+            <!-- CRAFTSMANSHIP & VALUE HIGHLIGHT BANNER -->
+            <section class="bg-brand-beige py-20 border-y border-stone-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                        <div class="space-y-6">
+                            <span class="text-brand-brownLight text-xs font-semibold tracking-widest uppercase">Artisanal Excellence</span>
+                            <h2 class="text-3xl sm:text-5xl font-serif-title font-bold text-brand-black leading-tight">
+                                Handcrafted Leather Masterpieces from Lahore
+                            </h2>
+                            <p class="text-stone-600 font-light leading-relaxed">
+                                Every Luxe Bags creation represents hours of meticulous work by master artisans in Lahore. We source full-grain premium leather, rich satin lining, and custom-plated rose gold hardware to deliver unmatched quality.
+                            </p>
+                            <div class="grid grid-cols-2 gap-6 pt-4">
+                                <div class="border-l-2 border-brand-brown pl-4">
+                                    <h4 class="font-serif-title text-2xl text-brand-black font-semibold">100% Genuine</h4>
+                                    <p class="text-xs text-stone-500 mt-1">Full-grain soft leather & luxury textiles</p>
+                                </div>
+                                <div class="border-l-2 border-brand-brown pl-4">
+                                    <h4 class="font-serif-title text-2xl text-brand-black font-semibold">Bespoke Hardware</h4>
+                                    <p class="text-xs text-stone-500 mt-1">Tarnish-resistant gold & metallic details</p>
+                                </div>
+                            </div>
+                            <div class="pt-4">
+                                <button onclick="switchView('about')" class="bg-brand-black text-brand-beige px-6 py-3 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-brand-brown transition-colors">
+                                    Read Our Story
+                                </button>
+                            </div>
+                        </div>
+                        <div class="relative">
+                            <div class="aspect-[4/5] rounded-2xl overflow-hidden shadow-2xl relative">
+                                <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=1000" alt="Lahore Handbag Craftsmanship" class="w-full h-full object-cover">
+                            </div>
+                            <!-- Floating badge -->
+                            <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl max-w-xs hidden sm:block border border-stone-100">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-brand-pink flex items-center justify-center text-brand-brown font-serif font-bold">
+                                        L
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-bold text-brand-black">Lahore Flagship</p>
+                                        <p class="text-[11px] text-stone-500">Gulberg III • MM Alam Road</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- TESTIMONIALS / INSTAGRAM SHOWCASE -->
+            <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                <div class="text-center max-w-xl mx-auto mb-12">
+                    <span class="text-brand-brownLight text-xs font-semibold tracking-widest uppercase">Vogue & Society</span>
+                    <h2 class="text-3xl font-serif-title font-semibold text-brand-black mt-1">As Seen In Lahore’s Style Circles</h2>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                    <div class="group relative aspect-square rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=600" alt="Style showcase 1" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=600" alt="Style showcase 2" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1594223274512-ad48027321b2?auto=format&fit=crop&q=80&w=600" alt="Style showcase 3" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </div>
+                    </div>
+                    <div class="group relative aspect-square rounded-xl overflow-hidden shadow-sm">
+                        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=600" alt="Style showcase 4" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white">
+                            <i class="fa-brands fa-instagram text-2xl"></i>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+
+        <!-- ================= SHOP PAGE VIEW ================= -->
+        <div id="view-shop" class="page-view hidden">
+            <!-- Shop Header Banner -->
+            <div class="bg-brand-pink/30 py-12 border-b border-stone-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <h1 class="text-4xl sm:text-5xl font-serif-title font-semibold text-brand-black">The Handbag Collection</h1>
+                    <p class="text-stone-600 text-sm mt-2 max-w-lg mx-auto">Explore our signature luxury range, handcrafted in soft blush, deep midnight obsidian, rich mocha, caramel nude, and dusty rose.</p>
+                </div>
+            </div>
+
+            <!-- Shop Filter & Controls -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+                <div class="flex flex-col md:flex-row gap-4 items-center justify-between bg-white p-4 rounded-2xl shadow-sm border border-stone-200/80 mb-8">
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-72">
+                        <input type="text" id="searchInput" placeholder="Search bag name or color..." class="w-full pl-10 pr-4 py-2 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown">
+                        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-stone-400 text-xs"></i>
+                    </div>
+
+                    <!-- Filter Buttons -->
+                    <div class="flex flex-wrap items-center gap-2 w-full md:w-auto">
+                        <button onclick="filterCategory('all')" class="filter-btn active text-xs font-medium px-4 py-2 rounded-xl border border-stone-200 hover:border-brand-brown transition-all" data-cat="all">All Bags</button>
+                        <button onclick="filterCategory('everyday')" class="filter-btn text-xs font-medium px-4 py-2 rounded-xl border border-stone-200 hover:border-brand-brown transition-all" data-cat="everyday">Everyday & Totes</button>
+                        <button onclick="filterCategory('shoulder')" class="filter-btn text-xs font-medium px-4 py-2 rounded-xl border border-stone-200 hover:border-brand-brown transition-all" data-cat="shoulder">Shoulder & Flap</button>
+                        <button onclick="filterCategory('evening')" class="filter-btn text-xs font-medium px-4 py-2 rounded-xl border border-stone-200 hover:border-brand-brown transition-all" data-cat="evening">Evening & Mini</button>
+                    </div>
+
+                    <!-- Sort Selector -->
+                    <div class="w-full md:w-auto flex items-center justify-end gap-2 text-xs text-stone-500">
+                        <span>Sort:</span>
+                        <select id="sortSelect" onchange="sortProducts()" class="bg-stone-50 border border-stone-200 rounded-xl px-3 py-2 text-xs font-medium text-stone-800 focus:outline-none">
+                            <option value="featured">Featured Order</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="name">Alphabetical</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Main Shop Grid Container -->
+                <div id="shopProductsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Populated dynamically -->
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= ABOUT US PAGE VIEW ================= -->
+        <div id="view-about" class="page-view hidden">
+            <!-- About Hero -->
+            <div class="relative py-24 bg-brand-black text-brand-beige overflow-hidden">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
+                    <span class="text-brand-pink text-xs uppercase tracking-widest font-semibold">Lahore Leather Atelier</span>
+                    <h1 class="text-4xl sm:text-6xl font-serif-title font-semibold mt-2 text-white">Our Heritage & Craft</h1>
+                    <p class="text-stone-400 text-sm sm:text-base max-w-2xl mx-auto mt-4 font-light">
+                        Born in the cultural heart of Pakistan, Luxe Bags bridges centuries of leather craftsmanship with contemporary haute couture aesthetics.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Detailed Story -->
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20 space-y-16">
+                <!-- Story Block 1 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                    <div>
+                        <h2 class="text-3xl font-serif-title font-semibold text-brand-black mb-4">Crafted on MM Alam Road</h2>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            Luxe Bags was established with a singular vision: to craft luxury handbags that rival international legacy houses right here in Lahore, Pakistan. Our flagship atelier located in Gulberg III serves as both a design studio and boutique.
+                        </p>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Each bag undergoes over 36 hours of hand-cutting, edge-painting, stitching, and metal assembly by seasoned Pakistani leather artisans.
+                        </p>
+                    </div>
+                    <div class="rounded-2xl overflow-hidden shadow-xl aspect-4/3">
+                        <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800" alt="Boutique Crafting" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Story Block 2 -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center md:flex-row-reverse">
+                    <div class="md:order-2">
+                        <h2 class="text-3xl font-serif-title font-semibold text-brand-black mb-4">Sustainably Sourced Leather</h2>
+                        <p class="text-stone-600 text-sm leading-relaxed mb-4">
+                            We take immense pride in our materials. From supple blush nappa to rich mocha grain and structured caramel finishes, all leather is ethically sourced and vegetable-tanned to ensure durability and eco-conscious elegance.
+                        </p>
+                        <ul class="space-y-2 text-xs text-stone-700 font-medium">
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> Hand-selected full grain leather</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> Custom tarnish-free metallic hardware</li>
+                            <li class="flex items-center gap-2"><i class="fa-solid fa-check text-brand-brown"></i> Soft satin interior lining with zip pockets</li>
+                        </ul>
+                    </div>
+                    <div class="md:order-1 rounded-2xl overflow-hidden shadow-xl aspect-4/3">
+                        <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=800" alt="Luxury Materials" class="w-full h-full object-cover">
+                    </div>
+                </div>
+
+                <!-- Values Grid -->
+                <div class="bg-brand-pink/20 p-8 sm:p-12 rounded-3xl border border-brand-pink/50 text-center">
+                    <h3 class="text-2xl font-serif-title font-semibold text-brand-black mb-8">The Luxe Bags Promise</h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-8">
+                        <div>
+                            <div class="w-12 h-12 rounded-full bg-white text-brand-brown flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fa-solid fa-gem text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm text-brand-black">Uncompromised Quality</h4>
+                            <p class="text-xs text-stone-500 mt-1">Rigorous 10-point quality checks prior to packaging.</p>
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 rounded-full bg-white text-brand-brown flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fa-solid fa-truck-fast text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm text-brand-black">Nationwide Delivery</h4>
+                            <p class="text-xs text-stone-500 mt-1">Insured courier shipping across all major cities in Pakistan.</p>
+                        </div>
+                        <div>
+                            <div class="w-12 h-12 rounded-full bg-white text-brand-brown flex items-center justify-center mx-auto mb-3 shadow-md">
+                                <i class="fa-solid fa-shield-halved text-lg"></i>
+                            </div>
+                            <h4 class="font-semibold text-sm text-brand-black">1-Year Warranty</h4>
+                            <p class="text-xs text-stone-500 mt-1">Full stitching & hardware support at our Lahore atelier.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- ================= CONTACT PAGE VIEW ================= -->
+        <div id="view-contact" class="page-view hidden">
+            <!-- Contact Header -->
+            <div class="bg-brand-beige py-12 border-b border-stone-200">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                    <span class="text-brand-brownLight text-xs font-semibold tracking-widest uppercase">Visit Our Boutique</span>
+                    <h1 class="text-4xl sm:text-5xl font-serif-title font-semibold text-brand-black mt-1">Lahore Flagship & Contact</h1>
+                    <p class="text-stone-600 text-sm mt-2">Experience our collection in person or reach our customer care team.</p>
+                </div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+                    
+                    <!-- Location & Info Sidebar -->
+                    <div class="lg:col-span-5 space-y-8">
+                        <div class="bg-white p-8 rounded-3xl shadow-sm border border-stone-200/80 space-y-6">
+                            <h3 class="text-2xl font-serif-title font-semibold text-brand-black">Boutique Details</h3>
+                            
+                            <!-- Address -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-pink/50 text-brand-brown flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs uppercase font-semibold text-stone-500 tracking-wider">Address</h4>
+                                    <p class="text-sm font-medium text-stone-800 mt-0.5">Luxe Bags Atelier, 42-B, Main MM Alam Road, Gulberg III, Lahore, Pakistan</p>
+                                </div>
+                            </div>
+
+                            <!-- Business Hours -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-pink/50 text-brand-brown flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-clock"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs uppercase font-semibold text-stone-500 tracking-wider">Business Hours</h4>
+                                    <p class="text-sm font-medium text-stone-800 mt-0.5">Mon - Sat: 11:00 AM – 9:00 PM (PKT)</p>
+                                    <p class="text-sm font-medium text-stone-800">Sunday: 2:00 PM – 8:00 PM (PKT)</p>
+                                </div>
+                            </div>
+
+                            <!-- Phone & WhatsApp -->
+                            <div class="flex items-start gap-4">
+                                <div class="w-10 h-10 rounded-full bg-brand-pink/50 text-brand-brown flex items-center justify-center flex-shrink-0 mt-1">
+                                    <i class="fa-solid fa-phone"></i>
+                                </div>
+                                <div>
+                                    <h4 class="text-xs uppercase font-semibold text-stone-500 tracking-wider">Direct Assistance</h4>
+                                    <p class="text-sm font-medium text-stone-800 mt-0.5">+92 (0)42 3578 9900</p>
+                                    <p class="text-sm font-medium text-emerald-700 font-semibold">+92 300 1234567 (WhatsApp VIP)</p>
+                                </div>
+                            </div>
+
+                            <!-- Direct WhatsApp Action Card -->
+                            <div class="bg-emerald-50 border border-emerald-200 p-4 rounded-2xl flex items-center justify-between">
+                                <div>
+                                    <p class="text-xs font-bold text-emerald-900">Instant VIP Inquiry</p>
+                                    <p class="text-[11px] text-emerald-700">Get assistance on bag choices</p>
+                                </div>
+                                <a href="https://wa.me/923001234567?text=Hi!%20I%20would%20like%20to%20inquire%20about%20handbags." target="_blank" class="bg-emerald-600 text-white text-xs px-3 py-2 rounded-xl font-semibold hover:bg-emerald-700 transition-colors flex items-center gap-1.5">
+                                    <i class="fa-brands fa-whatsapp"></i> Chat Now
+                                </a>
+                            </div>
+                        </div>
+
+                        <!-- Map Preview Card -->
+                        <div class="bg-stone-200 rounded-3xl overflow-hidden h-64 relative shadow-sm border border-stone-300 flex items-center justify-center text-center p-6">
+                            <div class="space-y-2">
+                                <i class="fa-solid fa-map-location-dot text-4xl text-brand-brown"></i>
+                                <h4 class="font-serif-title text-xl font-bold text-brand-black">MM Alam Road, Gulberg III</h4>
+                                <p class="text-xs text-stone-600">Located near fashion high-street, Lahore</p>
+                                <a href="https://maps.google.com/?q=MM+Alam+Road+Lahore" target="_blank" class="inline-block bg-white text-brand-black text-xs font-semibold px-4 py-2 rounded-full shadow hover:bg-brand-black hover:text-white transition-colors mt-2">
+                                    Open in Google Maps
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Contact Form -->
+                    <div class="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl shadow-sm border border-stone-200/80">
+                        <h3 class="text-2xl font-serif-title font-semibold text-brand-black mb-2">Send an Atelier Message</h3>
+                        <p class="text-xs text-stone-500 mb-8">Fill out the form below and our Lahore team will respond within 24 hours.</p>
+
+                        <form id="contactForm" onsubmit="handleContactSubmit(event)" class="space-y-5">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Full Name</label>
+                                    <input type="text" required placeholder="Ayesha Khan" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown">
+                                </div>
+                                <div>
+                                    <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Phone / WhatsApp</label>
+                                    <input type="tel" required placeholder="0300 1234567" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown">
+                                </div>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Email Address</label>
+                                <input type="email" required placeholder="ayesha@example.com" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown">
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Subject</label>
+                                <select class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown">
+                                    <option>General Inquiry</option>
+                                    <option>Handbag Customization</option>
+                                    <option>Boutique Appointment</option>
+                                    <option>Order Status Support</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Message</label>
+                                <textarea rows="4" required placeholder="How may we assist you with your luxury handbag selection?" class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-xl text-sm focus:outline-none focus:border-brand-brown"></textarea>
+                            </div>
+                            <button type="submit" class="w-full bg-brand-black text-brand-beige py-4 rounded-xl text-xs uppercase tracking-widest font-semibold hover:bg-brand-brown transition-colors shadow-lg">
+                                Send Message
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-brand-black text-stone-300 pt-16 pb-12 border-t border-stone-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 pb-12 border-b border-stone-800">
+                
+                <!-- Brand Info -->
+                <div class="space-y-4 md:col-span-1">
+                    <a href="#" onclick="switchView('home'); return false;" class="text-2xl font-serif-title font-bold tracking-widest text-white block">
+                        LUXE BAGS
+                    </a>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        Lahore's premier haute-maroquinerie house. Crafting luxury leather handbags with timeless grace and artisan mastery.
+                    </p>
+                    <div class="flex items-center space-x-3 pt-2">
+                        <a href="https://instagram.com" target="_blank" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-pink hover:text-brand-black flex items-center justify-center transition-colors text-sm">
+                            <i class="fa-brands fa-instagram"></i>
+                        </a>
+                        <a href="https://facebook.com" target="_blank" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-pink hover:text-brand-black flex items-center justify-center transition-colors text-sm">
+                            <i class="fa-brands fa-facebook-f"></i>
+                        </a>
+                        <a href="https://pinterest.com" target="_blank" class="w-9 h-9 rounded-full bg-stone-800 hover:bg-brand-pink hover:text-brand-black flex items-center justify-center transition-colors text-sm">
+                            <i class="fa-brands fa-pinterest-p"></i>
+                        </a>
+                        <a href="https://wa.me/923001234567" target="_blank" class="w-9 h-9 rounded-full bg-emerald-900/60 text-emerald-400 hover:bg-emerald-600 hover:text-white flex items-center justify-center transition-colors text-sm">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Navigation Links -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">Explore</h4>
+                    <ul class="space-y-2.5 text-xs">
+                        <li><button onclick="switchView('home')" class="hover:text-brand-pink transition-colors">Home Page</button></li>
+                        <li><button onclick="switchView('shop')" class="hover:text-brand-pink transition-colors">Full Shop Collection</button></li>
+                        <li><button onclick="switchView('about')" class="hover:text-brand-pink transition-colors">Our Craftsmanship</button></li>
+                        <li><button onclick="switchView('contact')" class="hover:text-brand-pink transition-colors">Lahore Flagship Store</button></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Care -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">Customer Care</h4>
+                    <ul class="space-y-2.5 text-xs text-stone-400">
+                        <li><span>Complimentary Delivery over PKR 30k</span></li>
+                        <li><span>1-Year Hardware Warranty</span></li>
+                        <li><span>Boutique Care & Restoration</span></li>
+                        <li><span>Order Tracking Support</span></li>
+                    </ul>
+                </div>
+
+                <!-- Contact & Location -->
+                <div>
+                    <h4 class="text-xs uppercase tracking-widest font-semibold text-white mb-4">Lahore Atelier</h4>
+                    <p class="text-xs text-stone-400 leading-relaxed">
+                        MM Alam Road, Gulberg III<br>
+                        Lahore, Punjab, Pakistan<br><br>
+                        <strong class="text-white">Call:</strong> +92 (0)42 3578 9900<br>
+                        <strong class="text-white">WhatsApp:</strong> +92 300 1234567
+                    </p>
+                </div>
+
+            </div>
+
+            <!-- Copyright -->
+            <div class="pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-stone-500">
+                <p>&copy; 2026 Luxe Bags Lahore. All Rights Reserved. Artisanal Luxury Handbags Pakistan.</p>
+                <div class="flex items-center space-x-4 mt-4 sm:mt-0">
+                    <span class="hover:text-stone-300">Privacy Policy</span>
+                    <span>•</span>
+                    <span class="hover:text-stone-300">Terms of Luxury Service</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- ================= SLIDING CART DRAWER ================= -->
+    <div id="cartOverlay" class="fixed inset-0 bg-black/60 z-50 opacity-0 pointer-events-none transition-opacity duration-300"></div>
+    <div id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 flex flex-col">
+        
+        <!-- Drawer Header -->
+        <div class="p-6 border-b border-stone-200 flex items-center justify-between bg-brand-beige">
+            <div class="flex items-center gap-2">
+                <i class="fa-solid fa-bag-shopping text-brand-brown"></i>
+                <h3 class="font-serif-title text-xl font-bold text-brand-black">Your Luxury Shopping Bag</h3>
+            </div>
+            <button id="closeCartBtn" class="text-stone-500 hover:text-black text-xl p-1">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+
+        <!-- Drawer Content List -->
+        <div id="cartItemsContainer" class="flex-grow overflow-y-auto p-6 space-y-4">
+            <!-- Dynamic Cart Items rendering -->
+        </div>
+
+        <!-- Drawer Footer Summary -->
+        <div class="p-6 border-t border-stone-200 bg-stone-50 space-y-4">
+            <div class="space-y-1.5 text-xs text-stone-600">
+                <div class="flex justify-between">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotalText" class="font-semibold text-stone-900">PKR 0</span>
+                </div>
+                <div class="flex justify-between">
+                    <span>Delivery (Pakistan)</span>
+                    <span id="cartShippingText" class="font-semibold text-stone-900">PKR 350</span>
+                </div>
+                <p id="freeShippingNotice" class="text-[11px] text-brand-brownLight italic">Add PKR 30,000 for FREE delivery!</p>
+                <div class="flex justify-between text-base font-bold text-brand-black pt-2 border-t border-stone-200">
+                    <span>Total Amount</span>
+                    <span id="cartTotalText" class="text-brand-brown">PKR 0</span>
+                </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="space-y-2 pt-2">
+                <!-- WhatsApp Checkout Button -->
+                <button onclick="checkoutViaWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white py-3.5 rounded-xl font-medium text-xs uppercase tracking-wider flex items-center justify-center gap-2 shadow-md transition-colors">
+                    <i class="fa-brands fa-whatsapp text-base"></i> Direct WhatsApp Order
+                </button>
+                
+                <!-- Online / Card Checkout Button -->
+                <button onclick="openCheckoutModal()" class="w-full bg-brand-black hover:bg-brand-brown text-white py-3.5 rounded-xl font-medium text-xs uppercase tracking-wider transition-colors shadow">
+                    Proceed to Online Payment
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= QUICK VIEW PRODUCT MODAL ================= -->
+    <div id="productModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-3xl w-full overflow-hidden shadow-2xl transform scale-95 transition-transform duration-300 relative border border-stone-100 flex flex-col md:flex-row">
+            <button onclick="closeProductModal()" class="absolute top-4 right-4 z-10 w-9 h-9 rounded-full bg-white/80 hover:bg-white text-stone-700 flex items-center justify-center shadow">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="md:w-1/2 bg-stone-100 h-64 md:h-auto">
+                <img id="modalImg" src="" alt="" class="w-full h-full object-cover">
+            </div>
+            
+            <div class="md:w-1/2 p-6 sm:p-8 flex flex-col justify-between">
+                <div class="space-y-3">
+                    <span id="modalCategory" class="text-xs uppercase tracking-widest text-brand-brown font-semibold"></span>
+                    <h2 id="modalTitle" class="text-2xl sm:text-3xl font-serif-title font-bold text-brand-black"></h2>
+                    <p id="modalPrice" class="text-xl font-semibold text-brand-brown"></p>
+                    <p id="modalDesc" class="text-xs text-stone-600 leading-relaxed pt-2 border-t border-stone-100"></p>
+                    
+                    <div class="pt-2">
+                        <span class="text-xs font-semibold text-stone-700 block mb-1">Color Palette:</span>
+                        <div class="flex items-center gap-2">
+                            <span id="modalColorBadge" class="inline-block px-3 py-1 rounded-full text-xs font-medium border border-stone-200 bg-stone-50"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pt-6 space-y-3">
+                    <button id="modalAddBtn" class="w-full bg-brand-black text-white py-3.5 rounded-xl text-xs uppercase tracking-widest font-semibold hover:bg-brand-brown transition-colors shadow">
+                        Add to Cart
+                    </button>
+                    <button id="modalWaBtn" class="w-full bg-emerald-50 border border-emerald-200 text-emerald-800 py-3 rounded-xl text-xs uppercase tracking-widest font-semibold hover:bg-emerald-100 transition-colors flex items-center justify-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-emerald-600"></i> Order via WhatsApp
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ================= CHECKOUT / PAYMENT SIMULATION MODAL ================= -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 opacity-0 pointer-events-none transition-opacity duration-300">
+        <div class="bg-white rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative border border-stone-100 max-h-[90vh] overflow-y-auto">
+            <button onclick="closeCheckoutModal()" class="absolute top-4 right-4 text-stone-400 hover:text-black text-xl">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <h3 class="text-2xl font-serif-title font-bold text-brand-black mb-1">Secure Checkout</h3>
+            <p class="text-xs text-stone-500 mb-6">Complete your luxury order for Pakistan delivery.</p>
+
+            <form onsubmit="processPayment(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Full Name</label>
+                    <input type="text" required placeholder="e.g. Fatima Ali" class="w-full px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-brand-brown">
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Phone Number</label>
+                        <input type="tel" required placeholder="0300 1234567" class="w-full px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-brand-brown">
+                    </div>
+                    <div>
+                        <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">City</label>
+                        <input type="text" required value="Lahore" class="w-full px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-brand-brown">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-stone-600 mb-1">Delivery Address</label>
+                    <input type="text" required placeholder="House/Street, Phase/Sector, Area" class="w-full px-4 py-2.5 bg-stone-50 border border-stone-200 rounded-xl text-xs focus:outline-none focus:border-brand-brown">
+                </div>
+
+                <div>
+                    <label class="block text-xs uppercase font-semibold text-stone-600 mb-2">Payment Option</label>
+                    <div class="grid grid-cols-3 gap-2">
+                        <label class="border border-stone-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-brand-brown flex flex-col items-center justify-center">
+                            <input type="radio" name="payment" value="cod" checked class="sr-only accent-brand-brown">
+                            <i class="fa-solid fa-money-bill-wave text-stone-700 text-sm mb-1"></i>
+                            <span class="text-[11px] font-medium">Cash on Delivery</span>
+                        </label>
+                        <label class="border border-stone-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-brand-brown flex flex-col items-center justify-center">
+                            <input type="radio" name="payment" value="jazzcash" class="sr-only">
+                            <i class="fa-solid fa-mobile-screen-button text-purple-700 text-sm mb-1"></i>
+                            <span class="text-[11px] font-medium">JazzCash / EasyPaisa</span>
+                        </label>
+                        <label class="border border-stone-200 rounded-xl p-2.5 text-center cursor-pointer hover:border-brand-brown flex flex-col items-center justify-center">
+                            <input type="radio" name="payment" value="card" class="sr-only">
+                            <i class="fa-solid fa-credit-card text-blue-700 text-sm mb-1"></i>
+                            <span class="text-[11px] font-medium">Credit / Debit Card</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="bg-brand-pink/30 p-4 rounded-xl space-y-1 text-xs border border-brand-pink/50">
+                    <div class="flex justify-between font-bold text-brand-black">
+                        <span>Total Payable:</span>
+                        <span id="checkoutTotalAmount">PKR 0</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full bg-brand-black text-brand-beige py-3.5 rounded-xl text-xs uppercase tracking-widest font-semibold hover:bg-brand-brown transition-colors shadow-lg">
+                    Confirm & Place Order
+                </button>
+            </form>
+        </div>
+    </div>
+
+
+    <!-- ================= TOAST NOTIFICATION CONTAINER ================= -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-brand-black text-white px-5 py-3.5 rounded-2xl shadow-2xl flex items-center gap-3 border border-stone-700">
+            <div class="w-7 h-7 rounded-full bg-emerald-500 text-white flex items-center justify-center text-xs">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <span id="toastMessage" class="text-xs font-medium">Item added to your luxury cart!</span>
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT LOGIC ================= -->
+    <script>
+        // -------------------------------------------------------------
+        // PRODUCTS DATABASE
+        // -------------------------------------------------------------
+        const products = [
+            {
+                id: 1,
+                name: "Blush Everyday Tote",
+                category: "everyday",
+                price: 18500,
+                color: "Soft Blush Pink",
+                image: "https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&q=80&w=800",
+                description: "Crafted from supple blush pink nappa leather with polished rose-gold plated hardware. Features a spacious interior designed to accommodate a 13-inch laptop, daily essentials, and a detachable zip pouch.",
+                featured: true
+            },
+            {
+                id: 2,
+                name: "Midnight Classic",
+                category: "shoulder",
+                price: 24000,
+                color: "Deep Obsidian Black",
+                image: "https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&q=80&w=800",
+                description: "An iconic silhouette in deep midnight quilted leather. Complete with a versatile sliding chain strap, luxury twist lock, and rich satin red lining.",
+                featured: true
+            },
+            {
+                id: 3,
+                name: "Mocha Shoulder Bag",
+                category: "shoulder",
+                price: 21000,
+                color: "Rich Mocha Brown",
+                image: "https://images.unsplash.com/photo-1594223274512-ad48027321b2?auto=format&fit=crop&q=80&w=800",
+                description: "Structured shoulder bag crafted in rich mocha brown calf leather. Signature lock mechanism, dual compartment interior, and top handle.",
+                featured: true
+            },
+            {
+                id: 4,
+                name: "Caramel Mini Bag",
+                category: "evening",
+                price: 14500,
+                color: "Caramel Nude Beige",
+                image: "https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?auto=format&fit=crop&q=80&w=800",
+                description: "Compact caramel beige leather micro handbag with a detachable crossbody leather strap and golden logo medallion. Perfect for effortless day-to-night styling.",
+                featured: true
+            },
+            {
+                id: 5,
+                name: "Rose Evening Bag",
+                category: "evening",
+                price: 16000,
+                color: "Dusty Rose Satin",
+                image: "https://images.unsplash.com/photo-1548036328-c9fa89d128fa?auto=format&fit=crop&q=80&w=800",
+                description: "Exquisite dusty rose evening clutch finished with crystal-encrusted clasp and delicate chain link strap. Made for galas and evening celebrations.",
+                featured: true
+            }
+        ];
+
+        // Global Cart State
+        let cart = [];
+
+        // -------------------------------------------------------------
+        // INITIALIZATION
+        // -------------------------------------------------------------
+        document.addEventListener('DOMContentLoaded', () => {
+            renderFeaturedProducts();
+            renderShopProducts(products);
+            setupCartEventListeners();
+        });
+
+        // Format Currency Helper
+        function formatPKR(amount) {
+            return 'PKR ' + amount.toLocaleString('en-PK');
+        }
+
+        // -------------------------------------------------------------
+        // VIEW / PAGE SWITCHING
+        // -------------------------------------------------------------
+        function switchView(viewId) {
+            // Hide all views
+            document.querySelectorAll('.page-view').forEach(view => {
+                view.classList.add('hidden');
+            });
+            // Show target view
+            const target = document.getElementById('view-' + viewId);
+            if (target) {
+                target.classList.remove('hidden');
+            }
+            // Update Active Nav Link
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.view === viewId) {
+                    link.classList.add('text-brand-black', 'border-b-2', 'border-brand-brown');
+                    link.classList.remove('text-stone-600');
+                } else {
+                    link.classList.remove('text-brand-black', 'border-b-2', 'border-brand-brown');
+                    link.classList.add('text-stone-600');
+                }
+            });
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        document.getElementById('mobileMenuBtn').addEventListener('click', toggleMobileMenu);
+
+        // -------------------------------------------------------------
+        // RENDER PRODUCTS
+        // -------------------------------------------------------------
+        function createProductCardHTML(product) {
+            return `
+                <div class="group bg-white rounded-3xl overflow-hidden border border-stone-200/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+                    <div>
+                        <!-- Image container -->
+                        <div class="relative aspect-4/5 overflow-hidden bg-stone-100 cursor-pointer" onclick="openProductModal(${product.id})">
+                            <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                            <span class="absolute top-4 left-4 bg-white/90 backdrop-blur-md text-brand-black text-[11px] font-semibold tracking-wider uppercase px-3 py-1 rounded-full shadow-sm">
+                                ${product.color}
+                            </span>
+                            <button onclick="event.stopPropagation(); openProductModal(${product.id})" class="absolute bottom-4 right-4 bg-white text-stone-800 w-10 h-10 rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity shadow-lg hover:bg-brand-black hover:text-white" title="Quick View">
+                                <i class="fa-solid fa-eye text-sm"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Details -->
+                        <div class="p-6">
+                            <span class="text-[10px] uppercase font-bold tracking-widest text-brand-brownLight">${product.category}</span>
+                            <h3 onclick="openProductModal(${product.id})" class="text-xl font-serif-title font-semibold text-brand-black mt-1 cursor-pointer hover:text-brand-brown transition-colors">
+                                ${product.name}
+                            </h3>
+                            <p class="text-xs text-stone-500 mt-1 line-clamp-2">${product.description}</p>
+                        </div>
+                    </div>
+
+                    <!-- Footer Action -->
+                    <div class="px-6 pb-6 pt-2 flex items-center justify-between border-t border-stone-100">
+                        <span class="text-base font-semibold text-brand-black">${formatPKR(product.price)}</span>
+                        <div class="flex items-center gap-2">
+                            <button onclick="addToCart(${product.id})" class="bg-stone-900 text-white px-4 py-2.5 rounded-xl text-xs font-semibold tracking-wider uppercase hover:bg-brand-brown transition-colors shadow">
+                                Add To Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderFeaturedProducts() {
+            const grid = document.getElementById('featuredProductsGrid');
+            const featuredList = products.filter(p => p.featured);
+            grid.innerHTML = featuredList.map(createProductCardHTML).join('');
+        }
+
+        function renderShopProducts(list) {
+            const grid = document.getElementById('shopProductsGrid');
+            if (list.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center text-stone-400 space-y-2">
+                        <i class="fa-solid fa-bag-shopping text-4xl"></i>
+                        <p class="text-sm">No handbags matched your search.</p>
+                    </div>
+                `;
+                return;
+            }
+            grid.innerHTML = list.map(createProductCardHTML).join('');
+        }
+
+        // -------------------------------------------------------------
+        // SHOP FILTERS & SEARCH
+        // -------------------------------------------------------------
+        let currentCategory = 'all';
+
+        function filterCategory(cat) {
+            currentCategory = cat;
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                if (btn.dataset.cat === cat) {
+                    btn.classList.add('bg-brand-black', 'text-white');
+                    btn.classList.remove('border-stone-200');
+                } else {
+                    btn.classList.remove('bg-brand-black', 'text-white');
+                    btn.classList.add('border-stone-200');
+                }
+            });
+            applyFilters();
+        }
+
+        document.getElementById('searchInput')?.addEventListener('input', applyFilters);
+
+        function applyFilters() {
+            const searchVal = document.getElementById('searchInput').value.toLowerCase().trim();
+            let filtered = products.filter(p => {
+                const matchesCat = currentCategory === 'all' || p.category === currentCategory;
+                const matchesSearch = p.name.toLowerCase().includes(searchVal) || p.color.toLowerCase().includes(searchVal);
+                return matchesCat && matchesSearch;
+            });
+            renderShopProducts(filtered);
+        }
+
+        function sortProducts() {
+            const val = document.getElementById('sortSelect').value;
+            let list = [...products];
+            if (val === 'price-low') {
+                list.sort((a, b) => a.price - b.price);
+            } else if (val === 'price-high') {
+                list.sort((a, b) => b.price - a.price);
+            } else if (val === 'name') {
+                list.sort((a, b) => a.name.localeCompare(b.name));
+            }
+            renderShopProducts(list);
+        }
+
+        // -------------------------------------------------------------
+        // QUICK VIEW MODAL
+        // -------------------------------------------------------------
+        function openProductModal(id) {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('modalImg').src = p.image;
+            document.getElementById('modalCategory').innerText = p.category + " collection";
+            document.getElementById('modalTitle').innerText = p.name;
+            document.getElementById('modalPrice').innerText = formatPKR(p.price);
+            document.getElementById('modalDesc').innerText = p.description;
+            document.getElementById('modalColorBadge').innerText = p.color;
+
+            const modalAddBtn = document.getElementById('modalAddBtn');
+            modalAddBtn.onclick = () => {
+                addToCart(p.id);
+                closeProductModal();
+            };
+
+            const modalWaBtn = document.getElementById('modalWaBtn');
+            modalWaBtn.onclick = () => {
+                const text = `Hello Luxe Bags Lahore, I am interested in ordering the *${p.name}* (${formatPKR(p.price)}). Is this available at your MM Alam Road boutique?`;
+                window.open(`https://wa.me/923001234567?text=${encodeURIComponent(text)}`, '_blank');
+            };
+
+            const modal = document.getElementById('productModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            modal.firstElementChild.classList.remove('scale-95');
+        }
+
+        function closeProductModal() {
+            const modal = document.getElementById('productModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            modal.firstElementChild.classList.add('scale-95');
+        }
+
+        // -------------------------------------------------------------
+        // CART DRAWER LOGIC
+        // -------------------------------------------------------------
+        function setupCartEventListeners() {
+            const cartBtn = document.getElementById('cartBtn');
+            const closeCartBtn = document.getElementById('closeCartBtn');
+            const overlay = document.getElementById('cartOverlay');
+
+            cartBtn.addEventListener('click', openCart);
+            closeCartBtn.addEventListener('click', closeCart);
+            overlay.addEventListener('click', closeCart);
+        }
+
+        function openCart() {
+            document.getElementById('cartDrawer').classList.remove('translate-x-full');
+            document.getElementById('cartOverlay').classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeCart() {
+            document.getElementById('cartDrawer').classList.add('translate-x-full');
+            document.getElementById('cartOverlay').classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const existing = cart.find(item => item.id === productId);
+            if (existing) {
+                existing.quantity += 1;
+            } else {
+                cart.push({ ...product, quantity: 1 });
+            }
+
+            updateCartUI();
+            showToast(`Added ${product.name} to cart`);
+        }
+
+        function updateQuantity(productId, delta) {
+            const item = cart.find(i => i.id === productId);
+            if (!item) return;
+
+            item.quantity += delta;
+            if (item.quantity <= 0) {
+                cart = cart.filter(i => i.id !== productId);
+            }
+            updateCartUI();
+        }
+
+        function removeFromCart(productId) {
+            cart = cart.filter(i => i.id !== productId);
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            // Update badge count
+            const totalCount = cart.reduce((sum, i) => sum + i.quantity, 0);
+            document.getElementById('cartCountBadge').innerText = totalCount;
+
+            // Render Drawer items
+            const container = document.getElementById('cartItemsContainer');
+            if (cart.length === 0) {
+                container.innerHTML = `
+                    <div class="h-full flex flex-col items-center justify-center text-center py-12 text-stone-400 space-y-3">
+                        <i class="fa-solid fa-bag-shopping text-5xl text-stone-300"></i>
+                        <p class="text-sm font-medium">Your shopping bag is empty</p>
+                        <button onclick="closeCart(); switchView('shop')" class="text-xs bg-brand-black text-white px-5 py-2.5 rounded-full uppercase tracking-wider font-semibold">
+                            Browse Collection
+                        </button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = cart.map(item => `
+                    <div class="flex items-center gap-4 bg-stone-50 p-3 rounded-2xl border border-stone-200/80">
+                        <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl">
+                        <div class="flex-grow">
+                            <h4 class="font-serif-title font-bold text-sm text-brand-black">${item.name}</h4>
+                            <p class="text-xs font-semibold text-brand-brown">${formatPKR(item.price)}</p>
+                            
+                            <div class="flex items-center gap-3 mt-2">
+                                <div class="flex items-center border border-stone-300 rounded-lg bg-white px-2 py-0.5">
+                                    <button onclick="updateQuantity(${item.id}, -1)" class="text-stone-500 hover:text-black px-1 text-xs">-</button>
+                                    <span class="text-xs font-bold px-2">${item.quantity}</span>
+                                    <button onclick="updateQuantity(${item.id}, 1)" class="text-stone-500 hover:text-black px-1 text-xs">+</button>
+                                </div>
+                                <button onclick="removeFromCart(${item.id})" class="text-xs text-red-500 hover:underline">
+                                    Remove
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            // Calculations
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = (subtotal > 30000 || subtotal === 0) ? 0 : 350;
+            const total = subtotal + shipping;
+
+            document.getElementById('cartSubtotalText').innerText = formatPKR(subtotal);
+            document.getElementById('cartShippingText').innerText = shipping === 0 ? "FREE" : formatPKR(shipping);
+            document.getElementById('cartTotalText').innerText = formatPKR(total);
+            document.getElementById('checkoutTotalAmount').innerText = formatPKR(total);
+
+            const notice = document.getElementById('freeShippingNotice');
+            if (subtotal >= 30000) {
+                notice.innerText = "You have unlocked FREE delivery across Pakistan!";
+                notice.classList.add('text-emerald-600');
+            } else {
+                notice.innerText = `Add ${formatPKR(30000 - subtotal)} more for FREE shipping!`;
+                notice.classList.remove('text-emerald-600');
+            }
+        }
+
+        // -------------------------------------------------------------
+        // WHATSAPP CHECKOUT INTEGRATION
+        // -------------------------------------------------------------
+        function checkoutViaWhatsApp() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please add a handbag first.");
+                return;
+            }
+
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            const shipping = subtotal > 30000 ? 0 : 350;
+            const total = subtotal + shipping;
+
+            let text = `*NEW ORDER - LUXE BAGS LAHORE*\n`;
+            text += `----------------------------------------\n`;
+            cart.forEach(item => {
+                text += `• *${item.name}* (x${item.quantity}) - ${formatPKR(item.price * item.quantity)}\n`;
+            });
+            text += `----------------------------------------\n`;
+            text += `Subtotal: ${formatPKR(subtotal)}\n`;
+            text += `Delivery Fee: ${shipping === 0 ? 'FREE' : formatPKR(shipping)}\n`;
+            text += `*Total Order Amount: ${formatPKR(total)}*\n\n`;
+            text += `Please send me payment instructions and delivery details for Pakistan.`;
+
+            const url = `https://wa.me/923001234567?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
+        }
+
+        // -------------------------------------------------------------
+        // ONLINE CHECKOUT & FORM HANDLERS
+        // -------------------------------------------------------------
+        function openCheckoutModal() {
+            if (cart.length === 0) {
+                alert("Your cart is empty. Please select a handbag first.");
+                return;
+            }
+            closeCart();
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('opacity-0', 'pointer-events-none');
+        }
+
+        function processPayment(e) {
+            e.preventDefault();
+            alert("Thank you for your luxury order! Our Lahore team has received your request and will contact you via phone/WhatsApp shortly.");
+            cart = [];
+            updateCartUI();
+            closeCheckoutModal();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            showToast("Message sent to Lahore Atelier!");
+            e.target.reset();
+        }
+
+        // -------------------------------------------------------------
+        // TOAST NOTIFICATIONS
+        // -------------------------------------------------------------
+        function showToast(msg) {
+            const toast = document.getElementById('toast');
+            document.getElementById('toastMessage').innerText = msg;
+            toast.classList.remove('translate-y-20', 'opacity-0');
+            
+            setTimeout(() => {
+                toast.classList.add('translate-y-20', 'opacity-0');
+            }, 3000);
+        }
+    </script>
+</body>
+</html>
